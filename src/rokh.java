@@ -75,7 +75,12 @@ public class rokh implements mohreh {
 
     @Override
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst) {
-        return true;
+        int j = a.indexOf(e);
+        int k = a.indexOf(d);
+            if(((j-k)%8 == 0 || (k-j)%8==0) || (((j-k)>0 && (j-k)<8) || ((k-j)>0 && (k-j)<8))){
+                return true;
+            }
+        return false;
     }
 
     @Override

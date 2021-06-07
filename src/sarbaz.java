@@ -64,34 +64,32 @@ public class sarbaz implements mohreh {
     }
     @Override
     public boolean can(rect d, ArrayList<rect> a , boolean isfirst) {
-        try{
-            for(int i = 0 ; i<a.size() ; i++){
-                if(!isfirst){
-                    if(rang == Color.black){
-                        if(i == a.indexOf(d) && i+1 == a.indexOf(e)){
-                            return true;
-                        }
-                    }
-                    if(rang == Color.white){
-                        if(i == a.indexOf(d) && i-1 == a.indexOf(e)){
-                            return true;
-                        }
-                    }
-                }
-                else{
-                    if(rang == Color.black){
-                        if(i == a.indexOf(d) && (i+2 == a.indexOf(e) || i+1 == a.indexOf(e))){
-                            return true;
-                        }
-                    }
-                    if(rang == Color.white){
-                        if(i == a.indexOf(d) && (i-2 == a.indexOf(e) || i-1 == a.indexOf(e))){
-                            return true;
-                        }
-                    }
+        int j = a.indexOf(e);
+        int k = a.indexOf(d);
+        if(!isfirst){
+            if(rang == Color.white){
+                if(j+1 == k){
+                    return true;
                 }
             }
-        }catch(Exception e){}
+            else{
+                if(j-1 == k){
+                    return true;
+                }
+            }
+        }
+        else{
+            if(rang == Color.white){
+                if(j+1 == k || j+2 == k){
+                    return true;
+                }
+            }
+            else{
+                if(j-1 == k || j-2 == k){
+                    return true;
+                }
+            }
+        }
         return false;
     }
     @Override
