@@ -67,7 +67,12 @@ public class asb implements mohreh {
 
     @Override
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst) {
-        return true;
+        int j = a.indexOf(e);
+        int k = a.indexOf(d);
+        if(j-6 == k || j+6 == k || j+10 == k || j-10 == k || j+24 == k || j+8 == k || j-8 == k || j-24 == k){
+            return true;
+        }
+        return false;
     }
 
     @Override
