@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Point;
-import java.util.ArrayList;
 public class App extends javax.swing.JFrame {
     String stat = "no";
     int indexmohreh,indexmorba;

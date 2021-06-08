@@ -106,4 +106,9 @@ public class shah implements mohreh {
     public boolean getchange() {
         return change;
     }
+
+    @Override
+    public boolean cankick(rect d, ArrayList<rect> a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
