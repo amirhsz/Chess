@@ -63,7 +63,7 @@ public class sarbaz implements mohreh {
         return rang;
     }
     @Override
-    public boolean can(rect d, ArrayList<rect> a , boolean isfirst) {
+    public boolean can(rect d, ArrayList<rect> a , boolean isfirst ,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
         if(!isfirst){
@@ -87,6 +87,9 @@ public class sarbaz implements mohreh {
             else{
                 if(j-1 == k || j-2 == k){
                     return true;
+                }
+                if(j-2 == k && e.doesmohreh(a, k, j, b)){
+                    return false;
                 }
             }
         }

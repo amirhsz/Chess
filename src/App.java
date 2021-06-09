@@ -74,7 +74,7 @@ public class App extends javax.swing.JFrame {
         if(stat == "moved" && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
             for(int i = 0 ; i<this.jPNL1.morba.size() ; i++){
                 if(this.jPNL1.morba.get(i).is(c)){
-                    if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , isfirst)){
+                    if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , isfirst , this.jPNL1.mohreh)){
                         this.jPNL1.mohreh.get(indexmohreh).move(this.jPNL1.morba.get(i));
                         this.jPNL1.maker(true, new Point(indexmohreh,i));
                         if(nobat == 0){

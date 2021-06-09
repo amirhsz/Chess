@@ -93,7 +93,7 @@ public class shah implements mohreh {
     }
 
     @Override
-    public boolean can(rect d, ArrayList<rect> a,boolean isfirst) {
+    public boolean can(rect d, ArrayList<rect> a,boolean isfirst ,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
                 if(j+1 == k || j-1 == k || j-k == 8 || k-j == 8){

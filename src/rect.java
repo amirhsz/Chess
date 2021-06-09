@@ -40,6 +40,14 @@ public class rect {
         }
         return -1;
     }
+    public boolean doesmohreh(ArrayList<rect> a , int n , int m ,ArrayList<mohreh> b){
+        for(int i = n ; i< m ; i++){
+            if(a.get(i).doesmohreh(b) != -1){
+                return true;
+            }
+        }
+        return false;
+    }
     public int doesrect(ArrayList<rect> morba){
         for(int i = 0 ; i<morba.size() ; i++){
             if(this.is(morba.get(i).vasat())){

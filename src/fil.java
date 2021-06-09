@@ -66,7 +66,7 @@ public class fil implements mohreh {
     }
 
     @Override
-    public boolean can(rect d, ArrayList<rect> a,boolean isfirst) {
+    public boolean can(rect d, ArrayList<rect> a,boolean isfirst,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
         if((j-k)%9 == 0 || (j-k)%7 == 0){
