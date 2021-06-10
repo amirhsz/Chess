@@ -69,21 +69,23 @@ public class vazir implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(((j-k)%8 == 0 || (k-j)%8==0) || (((j-k)>0 && (j-k)<8) || 
+        if((((j-k)%8 == 0 || (k-j)%8==0) || (((j-k)>0 && (j-k)<8 && !e.doesmohreh(a, k, j, b))
+        || ((k-j)>0 && (k-j)<8 && !e.doesmohreh(a, j, k, b))) || 
         ((k-j)>0 && (k-j)<8)) || ((j-k)%9 == 0 || (j-k)%7 == 0)){
-            
             return true;
         }
         return false;
     }
-
     @Override
     public boolean getchange() {
         return change;
     }
 
     @Override
-    public boolean cankick(rect d, ArrayList<rect> a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
+        if(can(d , a , true , b) && d.doesmohreh(b) != -1){
+            return true;
+        }
+        return false;
     }
 }

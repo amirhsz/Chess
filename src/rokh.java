@@ -90,8 +90,11 @@ public class rokh implements mohreh {
     }
 
     @Override
-    public boolean cankick(rect d, ArrayList<rect> a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
+        if(can(d , a , true , b) && d.doesmohreh(b) != -1){
+                return true;
+            }
+            return false;
     }
 }
 

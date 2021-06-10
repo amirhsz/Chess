@@ -61,7 +61,10 @@ public class App extends javax.swing.JFrame {
     private void jPNL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPNL1MouseClicked
         Point c = evt.getPoint();
         for(int i = 0 ; i<this.jPNL1.morba.size(); i++){
-            if(this.jPNL1.morba.get(i).is(c) && this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)!=-1){
+            if(this.jPNL1.morba.get(i).is(c) && this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)!=-1 &&
+            ((this.jPNL1.mohreh.get(this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)).getrang() == Color.white
+            && nobat == 0) || (this.jPNL1.mohreh.get(this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)).getrang()
+            == Color.black && nobat == 1))){
                 stat = "select";
                 indexmohreh =this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh);
                 indexmorba = i;
@@ -82,6 +85,9 @@ public class App extends javax.swing.JFrame {
                         }
                         else{
                             nobat = 0;
+                        }
+                        if(mohreh.cankick(this.jPNL1.morba.get(i), this.jPNL1.morba , this.jPNL1.mohreh)){
+                            this.jPNL1.mohreh.get(this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)).remove();
                         }
                         this.repaint();
                     }
