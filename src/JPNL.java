@@ -35,10 +35,10 @@ public class JPNL extends javax.swing.JPanel {
                             mohreh.add(new fil(e,Color.white));
                         }
                         if(i==4){
-                            mohreh.add(new vazir(e,Color.white));
+                            mohreh.add(new shah(e,Color.white));
                         }
                         if(i==5){
-                            mohreh.add(new shah(e,Color.white));
+                            mohreh.add(new vazir(e,Color.white));
                         }
                     }
                     if(j==2){

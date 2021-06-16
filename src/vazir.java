@@ -1,30 +1,63 @@
 import java.awt.*;
 import java.util.ArrayList;
 public class vazir implements mohreh {
-        Point xy;
+    Point xy;
     Color rang;
-    int[] x,y;
+    int[] x1,y1,x2,y2,x3,y3;
     rect e;
     boolean change = false;
     public vazir(rect e,Color rang){
         this.xy = e.vasat();
         this.rang = rang;
         this.e = e;
-        x=makex();
-        y=makey();
+        x1=makex1();
+        y1=makey1();
+        x2=makex2();
+        y2=makey2();
+        x3=makex3();
+        y3=makey3();
     }
-    private int[] makex(){
-        int n = 2*e.w/5;
-        int m = n/2;
-        int g = 3*n/2;
-        int[] x = {xy.x-m/2,xy.x+m/2,xy.x+m/2,xy.x+g/2,xy.x-g/2,xy.x-m/2};
+    private int[] makex1(){
+        int r = e.w*7/10;
+        int a = e.w*15/100;
+        int v = xy.x;
+        int[] x = {v , v+a , v+r/2 , v+a , v-a , v-r/2 , v-a};
         return x;
     }
-    private int[] makey(){
-        int k = e.h/5;
-        int f=2*k;
-        int[] y = {xy.y-e.h/2+k,xy.y-e.h/2+k,xy.y-e.h/2+f,xy.y-e.h/2+2*f,xy.y-e.h/2+2*f,xy.y-e.h/2+f};
+    private int[] makex2(){
+        int u = e.w/2;
+        int a = e.w*15/100;
+        int v = xy.x;
+        int[] x = {v , v+u/2 , v+a , v , v-a , v-u/2};
+        return x;
+    }
+    private int[] makex3(){
+        int i = e.w/10;
+        int v = xy.x;
+        int[] x = {v , v+i/2 , v , v-i/2};
+        return x;
+    }
+    private int[] makey1(){
+        int f = e.h/5;
+        int s = e.h/10;
+        int v = xy.y;
+        int[] y = {v , v+s , v , v+f , v+f , v , v+s};
         return y;
+    }
+    private int[] makey2(){
+        int c = e.h*3/20;
+        int s = e.h/10;
+        int p = s/2;
+        int v = xy.y;
+        int[] y = {v-c , v+p , v+s , v , v+s , v+p};
+        return y;
+    }
+    private int[] makey3(){
+        int c = e.h*3/20;
+        int m = e.h/10;
+        int v = xy.y;
+        int[] x = {v-c , v-c-m/2 , v-c-m , v-c-m/2};
+        return x;
     }
     @Override
     public void move(rect e) {
@@ -37,7 +70,17 @@ public class vazir implements mohreh {
             repaint();
         }
             g.setColor(rang);
-            g.fillPolygon(x, y, x.length);
+            g.fillRect(xy.x - e.w*3/20, xy.y + e.h*3/10, e.w*3/10, e.h/20);
+            g.fillPolygon(x1, y1, x1.length);
+            g.fillPolygon(x3, y3, x3.length);
+            int o = 20;
+            if(rang == Color.white){
+                g.setColor(new Color(rang.getRed()-o,rang.getGreen()-o,rang.getBlue()-o));
+            }
+            else{
+                g.setColor(new Color(rang.getRed()+o,rang.getGreen()+o,rang.getBlue()+o));
+            }
+            g.fillPolygon(x2, y2, x2.length);
     }
     @Override
     public void remove() {
@@ -51,8 +94,12 @@ public class vazir implements mohreh {
     }
     private void repaint(){
         this.xy = e.vasat();
-        this.x = this.makex();
-        this.y = this.makey();
+        this.x1 = this.makex1();
+        this.y1 = this.makey1();
+        this.x2 = this.makex2();
+        this.y2 = this.makey2();
+        this.x3 = this.makex3();
+        this.y3 = this.makey3();
     }
 
     @Override
