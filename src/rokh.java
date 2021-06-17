@@ -14,22 +14,23 @@ public class rokh implements mohreh {
         y=makey();
     }
     private int[] makex(){
-        int f = e.w/2;
-        int k = f/3;
+        int f = e.w/5;
+        int k = e.w/10;
         int m = k/2;
+        int p = e.w*15/100;
         int v = xy.x;
-        int p = 4*k;
-        int[] x = {v-p/2 , v-p/2+k , v-p/2+k , v-p/2+k+m , v-p/2+k+m , v+k/2 , v+k/2 , v+k/2+m , v+k/2+m , v+p/2
-        ,v+f/2 , v-f/2};
+        int[] x = {v-f , v-k , v-k , v-m , v-m , v+m , v+m , v+k , v+k , v+f
+        ,v+p , v-p};
         return x;
     }
     private int[] makey(){
-        int n = e.h/2;
-        int d = n/6;
-        int s = 2*d;
+        int n = e.h*35/100;
+        int d = e.h*5/100;
+        int s = e.h*15/100;
+        int u = e.h*15/100;
         int v = xy.y;
-        int[] y = {v-n+s , v-n+s , v-n+3*s , v-n+3*s , v-n+s , v-n+s , v-n+3*s
-        ,v-n+3*s, v-n+s, v-n+s , v+n/2 , v+n/2};
+        int[] y = {v-n+u , v-n+u , v-d+u , v-d+u , v-n+u , v-n+u , v-d+u
+        ,v-d+u , v-n+u , v-n+u , v+s+u , v+s+u};
         return y;
     }
     @Override
@@ -44,7 +45,7 @@ public class rokh implements mohreh {
         }
         g.setColor(rang);
         g.fillPolygon(x, y, x.length);
-        g.fillRect(xy.x-e.w/4, xy.y+e.h/3, e.w/2, e.h/12);
+        g.fillRect(xy.x-e.w*15/100, xy.y + e.h * 35 / 100, e.w*3/10, e.h/20);
             
     }
     @Override

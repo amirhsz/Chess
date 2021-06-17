@@ -14,16 +14,17 @@ public class sarbaz implements mohreh {
         y=makey();
     }
     private int[] makex(){
-        int n = 2*e.w/5;
-        int m = n/2;
-        int g = 3*n/2;
-        int[] x = {xy.x-m/2,xy.x+m/2,xy.x+m/2,xy.x+g/2,xy.x-g/2,xy.x-m/2};
+        int n = e.w*3/10;
+        int v = xy.x;
+        int[] x = {v-n , v , v+n , v};
         return x;
     }
     private int[] makey(){
-        int k = e.h/5;
-        int f=2*k;
-        int[] y = {xy.y-e.h/2+k,xy.y-e.h/2+k,xy.y-e.h/2+f,xy.y-e.h/2+2*f,xy.y-e.h/2+2*f,xy.y-e.h/2+f};
+        int k = e.h/20;
+        int m =e.h*25/100;
+        int f =e.h*35/100;
+        int v = xy.y;
+        int[] y = {v-k , v-f , v-k , v+m};
         return y;
     }
     @Override
@@ -38,6 +39,7 @@ public class sarbaz implements mohreh {
         }
             g.setColor(rang);
             g.fillPolygon(x, y, x.length);
+            g.fillRect(xy.x-e.w*15/100 , xy.y+e.h*3/10 , e.w*3/10, e.h/20);
     }
     @Override
     public void remove() {

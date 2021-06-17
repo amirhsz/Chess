@@ -19,9 +19,9 @@ public class JPNL extends javax.swing.JPanel {
                 if(morba.size()<64){
                     //jافقی
                     //i عمودی
-                    rect e = new rect((i-1)*w/8, (j-1)*h/8, w/8, h/8, new Color(50,50,50));
+                    rect e = new rect((i-1)*w/8, (j-1)*h/8, w/8, h/8, new Color( 204 , 119 , 34 ));
                     if((i+j)%2==0){
-                        e.c = new Color(255, 230, 173);
+                        e.c = new Color( 255 , 222 , 173);
                     }
                     morba.add(e);
                     if(j==1){
@@ -114,17 +114,17 @@ public class JPNL extends javax.swing.JPanel {
     private void initComponents() {
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(146, 28, 15), 0, true));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 398, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

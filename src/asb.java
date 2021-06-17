@@ -1,29 +1,72 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 public class asb implements mohreh {
     Point xy;
     Color rang;
-    int[] x,y;
+    int[] x1,y1,x2,y2,x3,y3;
     rect e;
     boolean change = false;
     public asb(rect e,Color rang){
         this.xy = e.vasat();
         this.rang = rang;
         this.e = e;
-        x=makex();
-        y=makey();
+        x1=makex1();
+        y1=makey1();
+        x2=makex2();
+        y2=makey2();
+        x3=makex3();
+        y3=makey3();
     }
-    private int[] makex(){
-        int n = 2*e.w/5;
-        int m = n/2;
-        int g = 3*n/2;
-        int[] x = {xy.x-m/2,xy.x+m/2,xy.x+m/2,xy.x+g/2,xy.x-g/2,xy.x-m/2};
+    private int[] makex1(){
+        int b = e.w/4;
+        int p = e.w*325/1000;
+        int f = e.w*3/10;
+        int o = e.w/20;
+        int v = xy.x;
+        int[] x = {v , v-b , v-f/2 , v+o , v-f/2 , v+f/2 , v+p};
         return x;
     }
-    private int[] makey(){
-        int k = e.h/5;
-        int f=2*k;
-        int[] y = {xy.y-e.h/2+k,xy.y-e.h/2+k,xy.y-e.h/2+f,xy.y-e.h/2+2*f,xy.y-e.h/2+2*f,xy.y-e.h/2+f};
+    private int[] makex2(){
+        int p = e.w/20;
+        int u = 2*p;
+        int o = e.w*125/1000;
+        int v = xy.x;
+        int[] x = {v-p , v-u , v-o};
+        return x;
+    }
+    private int[] makex3(){
+        int p = e.w*65/1000;
+        int u = e.w*290/1000;
+        int i = e.w*175/1000;
+        int q = e.w*40/1000;
+        int c = e.w*265/1000;
+        int o = e.w*150/1000;
+        int v = xy.x;
+        int[] x = {v+p , v+u , v+i , v+o ,v+c , v+q};
+        return x;
+    }
+    private int[] makey1(){
+        int q = e.h*4/10;
+        int a = e.h*3/10;
+        int k = e.h/10;
+        int o = e.h/20;
+        int v = xy.y;
+        int[] y = {v-q , v-o , v+k , v-k , v+a , v+a , v};
+        return y;
+    }
+    private int[] makey2(){
+        int n = e.h/10;
+        int m = e.h*15/100;
+        int v = xy.y;
+        int[] y = {v-m , v-m , v-n};
+        return y;
+    }
+    private int[] makey3(){
+        int p = e.h/5;
+        int u = e.h*3/10;
+        int v = xy.y;
+        int[] y = {v-u , v , v+p , v+p , v , v-u};
         return y;
     }
     @Override
@@ -37,7 +80,11 @@ public class asb implements mohreh {
             repaint();
         }
             g.setColor(rang);
-            g.fillPolygon(x, y, x.length);
+            g.fillRect(xy.x - e.w*3/20, xy.y + e.h*35/100, e.w*3/10, e.h/20);
+            g.fillPolygon(x1, y1, x1.length);
+            g.setColor(e.c);
+            g.fillPolygon(x2, y2, x2.length);
+            g.fillPolygon(x3, y3, x3.length);
     }
     @Override
     public void remove() {
@@ -51,8 +98,12 @@ public class asb implements mohreh {
     }
     private void repaint(){
         this.xy = e.vasat();
-        this.x = this.makex();
-        this.y = this.makey();
+        this.x1 = this.makex1();
+        this.y1 = this.makey1();
+        this.x2 = this.makex2();
+        this.y2 = this.makey2();
+        this.x3 = this.makex3();
+        this.y3 = this.makey3();
     }
 
     @Override

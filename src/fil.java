@@ -59,7 +59,7 @@ public class fil implements mohreh {
         int b = e.w*3/10;
         int f = 3*e.h/10;
         int o = e.h/10;
-        g.fillRect(xy.x - b/2, xy.y + f + o, b, o/2);
+        g.fillRect(xy.x - b/2, xy.y + e.h*35/100, b, o/2);
         g.fillPolygon(x1, y1, x1.length);
         g.fillPolygon(x2, y2, x2.length);
     }

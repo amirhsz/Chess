@@ -41,7 +41,8 @@ public class vazir implements mohreh {
         int f = e.h/5;
         int s = e.h/10;
         int v = xy.y;
-        int[] y = {v , v+s , v , v+f , v+f , v , v+s};
+        int u = e.h*10/100;
+        int[] y = {v+u , v+s+u , v+u , v+f+u , v+f+u , v+u , v+s+u};
         return y;
     }
     private int[] makey2(){
@@ -49,14 +50,16 @@ public class vazir implements mohreh {
         int s = e.h/10;
         int p = s/2;
         int v = xy.y;
-        int[] y = {v-c , v+p , v+s , v , v+s , v+p};
+        int u = e.h*10/100;
+        int[] y = {v-c+u , v+p+u , v+s+u , v+u , v+s+u , v+p+u};
         return y;
     }
     private int[] makey3(){
         int c = e.h*3/20;
         int m = e.h/10;
         int v = xy.y;
-        int[] x = {v-c , v-c-m/2 , v-c-m , v-c-m/2};
+        int u = e.h*10/100;
+        int[] x = {v-c+u , v-c-m/2+u , v-c-m+u , v-c-m/2+u};
         return x;
     }
     @Override
@@ -70,15 +73,14 @@ public class vazir implements mohreh {
             repaint();
         }
             g.setColor(rang);
-            g.fillRect(xy.x - e.w*3/20, xy.y + e.h*3/10, e.w*3/10, e.h/20);
+            g.fillRect(xy.x - e.w*3/20, xy.y + e.h*35/100, e.w*3/10, e.h/20);
             g.fillPolygon(x1, y1, x1.length);
             g.fillPolygon(x3, y3, x3.length);
-            int o = 20;
             if(rang == Color.white){
-                g.setColor(new Color(rang.getRed()-o,rang.getGreen()-o,rang.getBlue()-o));
+                g.setColor(new Color(250,235,215));
             }
             else{
-                g.setColor(new Color(rang.getRed()+o,rang.getGreen()+o,rang.getBlue()+o));
+                g.setColor(new Color(60,40,20));
             }
             g.fillPolygon(x2, y2, x2.length);
     }
