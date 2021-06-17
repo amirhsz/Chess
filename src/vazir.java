@@ -73,7 +73,7 @@ public class vazir implements mohreh {
         int k = a.indexOf(d);
         if((((j-k)%8==0) || (((j-k)>0 && (j-k)<8 && !e.doesmohreh(a, k, j, b))
         || ((k-j)>0 && (k-j)<8 && !e.doesmohreh(a, j, k, b))))
-        || ((j-k)%9 == 0 || ((j-k)%7 == 0 && (j-k>8 || k-j>8)))){
+        || ((j-k)%9 == 0 || ((j-k)%7 == 0 && (j-k>8 || k-j>8))) && e.filvazirgo(a, b)){
             return true;
         }
         return false;

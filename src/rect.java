@@ -56,6 +56,15 @@ public class rect {
         }
         return -1;
     }
+    public boolean filvazirgo(ArrayList<rect> morba , ArrayList<mohreh> moh){
+        int k = morba.indexOf(this);
+        for(int i = 1 ; i<8 ; i++){
+            if(morba.get(k+9*i).doesmohreh(moh) != -1){
+                return false;
+            }
+        }
+        return true;
+    }
     @Override
     public String toString(){
         return "w= "+w+",h= "+h+",x= "+x+",y= "+y;
