@@ -6,6 +6,7 @@ public class shah implements mohreh {
     int[] x1,x2,y1,y2;
     rect e;
     boolean change = false;
+    boolean isremove = false;
     public shah(rect e,Color rang){
         this.xy = e.vasat();
         this.rang = rang;
@@ -69,6 +70,7 @@ public class shah implements mohreh {
         this.e = new rect(-1,-1,0,0,Color.white);
         this.repaint();
         change = true;
+        isremove = true;
     }
     @Override
     public String toString(){
@@ -96,7 +98,7 @@ public class shah implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst ,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-                if(j+1 == k || j-1 == k || j-k == 8 || k-j == 8){
+                if(j+1 == k || j-1 == k || j-8 == k || j+8 == k || j-7 == k || j+7 == k || j+9 == k || j-9 == k){
                     return true;
                 }
         return false;
@@ -111,6 +113,28 @@ public class shah implements mohreh {
     public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
         if(can(d , a , true , b) && d.doesmohreh(b) != -1){
             return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String gettype() {
+        return "shah";
+    }
+
+    @Override
+    public boolean isemove() {
+        return isremove;
+    }
+
+    @Override
+    public boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c) {
+        int i = 0;
+        for (mohreh b : a) {
+            i++;
+            if(b.cankick(e, c, a) && b.getrang() != rang){
+                return true;
+            }
         }
         return false;
     }

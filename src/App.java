@@ -77,7 +77,7 @@ public class App extends javax.swing.JFrame {
         if(stat == "moved" && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
             for(int i = 0 ; i<this.jPNL1.morba.size() ; i++){
                 if(this.jPNL1.morba.get(i).is(c)){
-                    if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , isfirst , this.jPNL1.mohreh)){
+                    if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , isfirst , this.jPNL1.mohreh) && this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh) == -1){
                         this.jPNL1.mohreh.get(indexmohreh).move(this.jPNL1.morba.get(i));
                         this.jPNL1.maker(true, new Point(indexmohreh,i));
                         if(nobat == 0){
@@ -86,10 +86,25 @@ public class App extends javax.swing.JFrame {
                         else{
                             nobat = 0;
                         }
+                    }
                         if(mohreh.cankick(this.jPNL1.morba.get(i), this.jPNL1.morba , this.jPNL1.mohreh)){
+                            this.jPNL1.mohreh.get(indexmohreh).move(this.jPNL1.morba.get(i));
+                            this.jPNL1.maker(true, new Point(indexmohreh,i));
                             this.jPNL1.mohreh.get(this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)).remove();
+                            if(nobat == 0){
+                                nobat = 1;
+                            }
+                            else{
+                                nobat = 0;
+                            }
                         }
                         this.repaint();
+                }
+            }
+            for(mohreh b : this.jPNL1.mohreh){
+                if(nobat == 0){
+                    if(b.gettype() == "shah" && b.cancickme(this.jPNL1.mohreh, this.jPNL1.morba) && b.getrang() == Color.black){
+                        System.out.println("done!");
                     }
                 }
             }
@@ -97,7 +112,7 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_jPNL1MouseClicked
 
     private void jPNL1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPNL1MouseMoved
-        if(stat == "select"){
+        if(stat == "select" && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
             stat = "moved";
         }
     }//GEN-LAST:event_jPNL1MouseMoved

@@ -5,7 +5,8 @@ public class sarbaz implements mohreh {
     Color rang;
     private int[] x,y;
     rect e;
-    public boolean change = false;
+    boolean change = false;
+    boolean isremove = false;
     public sarbaz(rect e,Color rang){
         this.xy = e.vasat();
         this.rang = rang;
@@ -44,6 +45,7 @@ public class sarbaz implements mohreh {
         this.e = new rect(-1,-1,0,0,Color.white);
         this.repaint();
         change = true;
+        isremove = true;
     }
     @Override
     public String toString(){
@@ -102,6 +104,40 @@ public class sarbaz implements mohreh {
 
     @Override
     public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
+        int j = a.indexOf(e);
+        int k = a.indexOf(d);
+        if(d.doesmohreh(b) != -1){
+            if(rang == Color.black){
+                if((j-9 == k) || (j+7 == k)){
+                    return true;
+                }
+            }
+            else{
+                if(j+9 == k || j-7 == k){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String gettype() {
+        return "sarbaz";
+    }
+
+    @Override
+    public boolean isemove() {
+        return isremove;
+    }
+
+    @Override
+    public boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c) {
+        for (mohreh b : a) {
+            if(b.cankick(e, c, a)){
+                return true;
+            }
+        }
         return false;
     }
 }

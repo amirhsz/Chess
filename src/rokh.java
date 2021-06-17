@@ -6,6 +6,7 @@ public class rokh implements mohreh {
     int[] x,y;
     rect e;
     boolean change = false;
+    boolean isremove = false;
     public rokh(rect e,Color rang){
         this.xy = e.vasat();
         this.rang = rang;
@@ -52,6 +53,7 @@ public class rokh implements mohreh {
         this.e = new rect(-1,-1,0,0,Color.white);
         this.repaint();
         change = true;
+        isremove = true;
     }
     @Override
     public String toString(){
@@ -95,6 +97,25 @@ public class rokh implements mohreh {
                 return true;
             }
             return false;
+    }
+
+    @Override
+    public String gettype() {
+        return "rokh";
+    }
+    @Override
+    public boolean isemove() {
+        return isremove;
+    }
+
+    @Override
+    public boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c) {
+        for (mohreh b : a) {
+            if(b.cankick(e, c, a)){
+                return true;
+            }
+        }
+        return false;
     }
 }
 

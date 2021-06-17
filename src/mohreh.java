@@ -9,4 +9,7 @@ public interface mohreh{
     Point getxy();
     Color getrang();
     boolean getchange();
+    String gettype();
+    boolean isemove();
+    boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c);
 }

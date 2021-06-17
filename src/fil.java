@@ -1,11 +1,12 @@
 import java.awt.*;
 import java.util.ArrayList;
 public class fil implements mohreh {
-        Point xy;
+    Point xy;
     Color rang;
     int[] x,y;
     rect e;
     boolean change = false;
+    boolean isremove = false;
     public fil(rect e,Color rang){
         this.xy = e.vasat();
         this.rang = rang;
@@ -44,6 +45,7 @@ public class fil implements mohreh {
         this.e = new rect(-1,-1,0,0,Color.white);
         this.repaint();
         change = true;
+        isremove = true;
     }
     @Override
     public String toString(){
@@ -69,7 +71,7 @@ public class fil implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if((j-k)%9 == 0 || (j-k)%7 == 0){
+        if(((j-k)%9 == 0 || ((j-k)%7 == 0 && (j-k>8 || k-j>8)))){
             return true;
         }
         return false;
@@ -86,5 +88,25 @@ public class fil implements mohreh {
                 return true;
             }
             return false;
+    }
+
+    @Override
+    public String gettype() {
+        return "fil";
+    }
+
+    @Override
+    public boolean isemove() {
+        return isremove;
+    }
+
+    @Override
+    public boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c) {
+        for (mohreh b : a) {
+            if(b.cankick(e, c, a)){
+                return true;
+            }
+        }
+        return false;
     }
 }

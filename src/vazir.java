@@ -6,6 +6,7 @@ public class vazir implements mohreh {
     int[] x,y;
     rect e;
     boolean change = false;
+    boolean isremove = true;
     public vazir(rect e,Color rang){
         this.xy = e.vasat();
         this.rang = rang;
@@ -44,6 +45,7 @@ public class vazir implements mohreh {
         this.e = new rect(-1,-1,0,0,Color.white);
         this.repaint();
         change = true;
+        isremove = true;
     }
     @Override
     public String toString(){
@@ -69,9 +71,9 @@ public class vazir implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if((((j-k)%8 == 0 || (k-j)%8==0) || (((j-k)>0 && (j-k)<8 && !e.doesmohreh(a, k, j, b))
-        || ((k-j)>0 && (k-j)<8 && !e.doesmohreh(a, j, k, b))) || 
-        ((k-j)>0 && (k-j)<8)) || ((j-k)%9 == 0 || (j-k)%7 == 0)){
+        if((((j-k)%8==0) || (((j-k)>0 && (j-k)<8 && !e.doesmohreh(a, k, j, b))
+        || ((k-j)>0 && (k-j)<8 && !e.doesmohreh(a, j, k, b))))
+        || ((j-k)%9 == 0 || ((j-k)%7 == 0 && (j-k>8 || k-j>8)))){
             return true;
         }
         return false;
@@ -85,6 +87,26 @@ public class vazir implements mohreh {
     public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
         if(can(d , a , true , b) && d.doesmohreh(b) != -1){
             return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String gettype() {
+        return "vazir";
+    }
+
+    @Override
+    public boolean isemove() {
+        return isremove;
+    }
+
+    @Override
+    public boolean cancickme(ArrayList<mohreh> a , ArrayList<rect> c) {
+        for (mohreh b : a) {
+            if(b.cankick(e, c, a)){
+                return true;
+            }
         }
         return false;
     }

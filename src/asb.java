@@ -5,6 +5,7 @@ public class asb implements mohreh {
     Color rang;
     int[] x,y;
     rect e;
+    boolean isremove = false;
     boolean change = false;
     public asb(rect e,Color rang){
         this.xy = e.vasat();
@@ -44,6 +45,7 @@ public class asb implements mohreh {
         this.e = new rect(-1,-1,0,0,Color.white);
         this.repaint();
         change = true;
+        isremove = true;
     }
     @Override
     public String toString(){
@@ -69,7 +71,7 @@ public class asb implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst , ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(j-6 == k || j+6 == k || j+10 == k || j-10 == k || j+24 == k || j+8 == k || j-8 == k || j-24 == k){
+        if(j-6 == k || j+6 == k || j+10 == k || j-10 == k || j+17 == k || j+15 == k || j-15 == k || j-17 == k){
             return true;
         }
         return false;
@@ -86,5 +88,24 @@ public class asb implements mohreh {
                 return true;
             }
             return false;
+    }
+
+    @Override
+    public String gettype() {
+        return "asb";
+    }
+
+    @Override
+    public boolean isemove() {
+        return isremove;}
+
+    @Override
+    public boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c) {
+        for (mohreh b : a) {
+            if(b.cankick(e, c, a)){
+                return true;
+            }
+        }
+        return false;
     }
 }
