@@ -32,11 +32,11 @@ public class App extends javax.swing.JFrame {
         jPNL1.setLayout(jPNL1Layout);
         jPNL1Layout.setHorizontalGroup(
             jPNL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGap(0, 423, Short.MAX_VALUE)
         );
         jPNL1Layout.setVerticalGroup(
             jPNL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 371, Short.MAX_VALUE)
+            .addGap(0, 376, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

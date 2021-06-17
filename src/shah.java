@@ -37,15 +37,17 @@ public class shah implements mohreh {
         int s = h/4;
         int d = s/2;
         int g = 25*e.h/1000;
+        int u =  e.h*10/100;
         int v = xy.y;
-        int[] y = {v-h-s , v-h+g , v-h , v-h+s , v-h+s-g, v-s , v-s
-        , v-d , v-d , v-s , v-s , v-h+s-g , v-h+s , v-h , v-h+g , v-h-s};
+        int[] y = {v-h-s+u , v-h+g+u , v-h+u , v-h+s+u , v-h+s-g+u, v-s+u , v-s+u
+        , v-d+u , v-d+u , v-s+u , v-s+u , v-h+s-g+u , v-h+s+u , v-h+u , v-h+g+u , v-h-s+u};
         return y;
     }
     private int[] makey2(){
         int g = e.h/5;
         int v = xy.y;
-        int[] y = {v , v+g, v+g , v};
+        int u =  e.h*10/100;
+        int[] y = {v+u , v+g+u, v+g+u , v+u};
         return y;
     }
     @Override
@@ -61,7 +63,7 @@ public class shah implements mohreh {
         g.setColor(rang);
         int l = e.h/5;
         int s = e.h/10;
-        g.fillRect(xy.x-3*e.w/20, xy.y+l+s, 3*e.w/10, s/2);
+        g.fillRect(xy.x-3*e.w/20, xy.y + e.h*35/100, 3*e.w/10, s/2);
         g.fillPolygon(x1, y1, x1.length);
         g.fillPolygon(x2, y2, x2.length);
     }
