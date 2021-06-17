@@ -41,7 +41,7 @@ public class rect {
         return -1;
     }
     public boolean doesmohreh(ArrayList<rect> a , int n , int m ,ArrayList<mohreh> b){
-        for(int i = n ; i< m ; i++){
+        for(int i = n+1 ; i< m ; i++){
             if(a.get(i).doesmohreh(b) != -1){
                 return true;
             }
@@ -58,11 +58,13 @@ public class rect {
     }
     public boolean filvazirgo(ArrayList<rect> morba , ArrayList<mohreh> moh){
         int k = morba.indexOf(this);
-        for(int i = 1 ; i<8 ; i++){
-            if(morba.get(k+9*i).doesmohreh(moh) != -1){
-                return false;
+        try{
+            for(int i = 1 ; i<8 ; i++){
+                if(morba.get(k+9*i).doesmohreh(moh) != -1){
+                    return false;
+                }
             }
-        }
+        }catch(Exception e){}
         return true;
     }
     @Override

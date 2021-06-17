@@ -117,5 +117,10 @@ public class rokh implements mohreh {
         }
         return false;
     }
+
+    @Override
+    public boolean cango(ArrayList<mohreh> a, ArrayList<rect> c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 

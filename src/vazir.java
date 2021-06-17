@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
-public class vazir implements mohreh {
+;public class vazir implements mohreh {
         Point xy;
     Color rang;
     int[] x,y;
@@ -109,5 +109,10 @@ public class vazir implements mohreh {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean cango(ArrayList<mohreh> a, ArrayList<rect> c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

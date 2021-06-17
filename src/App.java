@@ -101,6 +101,15 @@ public class App extends javax.swing.JFrame {
                         this.repaint();
                 }
             }
+            for (mohreh b : this.jPNL1.mohreh) {
+                if(b.gettype() == "shah" && ((nobat == 0 && b.getrang() == Color.black) || (nobat == 1 && b.getrang() == Color.white)) && b.cancickme(this.jPNL1.mohreh, this.jPNL1.morba)){
+                    System.out.println("kish");
+                    if(!b.cango(this.jPNL1.mohreh, this.jPNL1.morba)){
+                        System.out.println("mot!!");
+                        
+                    }
+                }
+            }
         }
     }//GEN-LAST:event_jPNL1MouseClicked
 
