@@ -106,7 +106,6 @@ public class App extends javax.swing.JFrame {
                     System.out.println("kish");
                     if(!b.cango(this.jPNL1.mohreh, this.jPNL1.morba)){
                         System.out.println("mot!!");
-                        
                     }
                 }
             }

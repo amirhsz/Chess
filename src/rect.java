@@ -13,6 +13,9 @@ public class rect {
     public Point vasat(){
         return new Point(this.x + this.w/2 , this.y + this.h/2);
     }
+    public void setc(Color k){
+        this.c = k;
+    }
     public void move(Graphics g,int x, int y){
         this.x = x;
         this.y = y;

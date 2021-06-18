@@ -100,10 +100,8 @@ public class shah implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst ,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(j>8 && j%8!=7 && j<55 && j%8!=0){
-                if(j+1 == k || j-1 == k || j-8 == k || j+8 == k || j-7 == k || j+7 == k || j+9 == k || j-9 == k){
-                    return true;
-                }
+        if(j+1 == k || j-1 == k || j-8 == k || j+8 == k || j-7 == k || j+7 == k || j+9 == k || j-9 == k){
+            return true;
         }
         return false;
     }
@@ -145,6 +143,7 @@ public class shah implements mohreh {
     public boolean cango(ArrayList<mohreh> a, ArrayList<rect> c) {
         for (rect c1 : c) {
             if(this.can(c1, c, true, a) && c1.doesmohreh(a) == -1){
+                c.get(0).setc(Color.red);
                 return true;
             }
         }
