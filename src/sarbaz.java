@@ -70,30 +70,32 @@ public class sarbaz implements mohreh {
     public boolean can(rect d, ArrayList<rect> a , boolean isfirst ,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(!isfirst){
-            if(rang == Color.white){
-                if(j+1 == k){
-                    return true;
+        if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
+            if(!isfirst){
+                if(rang == Color.white){
+                    if(j+1 == k){
+                        return true;
+                    }
+                }
+                else{
+                    if(j-1 == k){
+                        return true;
+                    }
                 }
             }
             else{
-                if(j-1 == k){
-                    return true;
+                if(rang == Color.white){
+                    if(j+1 == k || j+2 == k){
+                        return true;
+                    }
                 }
-            }
-        }
-        else{
-            if(rang == Color.white){
-                if(j+1 == k || j+2 == k){
-                    return true;
-                }
-            }
-            else{
-                if(j-1 == k || j-2 == k){
-                    return true;
-                }
-                if(j-2 == k && e.doesmohreh(a, k, j, b)){
-                    return false;
+                else{
+                    if(j-1 == k || j-2 == k){
+                        return true;
+                    }
+                    if(j-2 == k && e.doesmohreh(a, k, j, b)){
+                        return false;
+                    }
                 }
             }
         }
@@ -144,7 +146,18 @@ public class sarbaz implements mohreh {
     }
 
     @Override
-    public boolean cango(ArrayList<mohreh> a, ArrayList<rect> c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<rect> cango(ArrayList<mohreh> a, ArrayList<rect> c) {
+        ArrayList<rect> chose = new ArrayList();
+        for (rect c1 : c) {
+            if(this.can(c1, c, true, a) || cankick(c1 , c , a)){
+                chose.add(c1);
+            }
+        }
+        return chose;
+    }
+
+    @Override
+    public rect getrect() {
+        return e;
     }
 }

@@ -12,5 +12,6 @@ public interface mohreh{
     String gettype();
     boolean isemove();
     boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c);
-    boolean cango(ArrayList<mohreh> a, ArrayList<rect> c);
+    ArrayList<rect> cango(ArrayList<mohreh> a, ArrayList<rect> c);
+    rect getrect();
 }

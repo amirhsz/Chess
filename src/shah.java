@@ -100,8 +100,10 @@ public class shah implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst ,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(j+1 == k || j-1 == k || j-8 == k || j+8 == k || j-7 == k || j+7 == k || j+9 == k || j-9 == k){
-            return true;
+        if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
+            if(j+1 == k || j-1 == k || j-8 == k || j+8 == k || j-7 == k || j+7 == k || j+9 == k || j-9 == k){
+                return true;
+            }
         }
         return false;
     }
@@ -113,7 +115,7 @@ public class shah implements mohreh {
 
     @Override
     public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
-        if(can(d , a , true , b) && d.doesmohreh(b) != -1){
+        if(can(d , a , true , b) && d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang){
             return true;
         }
         return false;
@@ -140,13 +142,17 @@ public class shah implements mohreh {
         return false;
     }
     @Override
-    public boolean cango(ArrayList<mohreh> a, ArrayList<rect> c) {
+    public ArrayList<rect> cango(ArrayList<mohreh> a, ArrayList<rect> c) {
+        ArrayList<rect> chose = new ArrayList();
         for (rect c1 : c) {
-            if(this.can(c1, c, true, a) && c1.doesmohreh(a) == -1){
-                c.get(0).setc(Color.red);
-                return true;
+            if(this.can(c1, c, true, a)){
+                chose.add(c1);
             }
         }
-        return false;
+        return chose;
+    }
+    @Override
+    public rect getrect() {
+        return e;
     }
 }

@@ -1,15 +1,32 @@
 import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
 public class App extends javax.swing.JFrame {
     String stat = "no";
     int indexmohreh,indexmorba;
     mohreh mohreh;
+    Color color,rang = Color.yellow , chosecolor = Color.red;
+    ArrayList<Color> lastcolor = new ArrayList();
+    ArrayList<rect> lastgochose = new ArrayList();
+    rect rect;
     int nobat = 0;
     boolean isfirst = true;
     public App() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
+    public boolean doeschangechose(){
+        int k = 0 ;
+        for (rect morba : this.jPNL1.morba) {
+            if(morba.c == Color.yellow){
+                k++;
+            }
+        }
+        if(k>=1){
+            return true;
+        }
+        return false;
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -69,9 +86,26 @@ public class App extends javax.swing.JFrame {
                 indexmohreh =this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh);
                 indexmorba = i;
                 mohreh = this.jPNL1.mohreh.get(indexmohreh);
+                if(doeschangechose()){
+                    this.jPNL1.morba.get(this.jPNL1.morba.indexOf(rect)).c = color;
+                    for(int j = 0 ; j<lastcolor.size() ; j++){
+                        lastgochose.get(j).c = lastcolor.get(j);
+                    }
+                    lastcolor.clear();
+                    lastgochose.clear();
+                }
+                color = this.jPNL1.morba.get(this.jPNL1.morba.indexOf(mohreh.getrect())).c;
+                rect = this.jPNL1.morba.get(this.jPNL1.morba.indexOf(mohreh.getrect()));
+                this.jPNL1.morba.get(this.jPNL1.morba.indexOf(mohreh.getrect())).c = rang;
+                lastgochose = mohreh.cango(this.jPNL1.mohreh,this.jPNL1.morba);
+                for(rect b : mohreh.cango(this.jPNL1.mohreh,this.jPNL1.morba)){
+                    lastcolor.add(this.jPNL1.morba.get(this.jPNL1.morba.indexOf(b)).c);
+                    this.jPNL1.morba.get(this.jPNL1.morba.indexOf(b)).c = chosecolor;
+                }
                 if(mohreh.getchange()){
                     isfirst = false;
                 }
+                this.repaint();
             }
         }
         if(stat == "moved" && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
@@ -80,6 +114,11 @@ public class App extends javax.swing.JFrame {
                     if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , isfirst , this.jPNL1.mohreh) && this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh) == -1){
                         this.jPNL1.mohreh.get(indexmohreh).move(this.jPNL1.morba.get(i));
                         this.jPNL1.maker(true, new Point(indexmohreh,i));
+                        this.jPNL1.morba.get(this.jPNL1.morba.indexOf(rect)).c = color;
+                        for(int j = 0 ; j<lastcolor.size() ; j++){
+                            lastgochose.get(j).c = lastcolor.get(j);
+                        }
+                        lastcolor.clear();
                         if(nobat == 0){
                             nobat = 1;
                         }
@@ -91,6 +130,11 @@ public class App extends javax.swing.JFrame {
                             this.jPNL1.mohreh.get(indexmohreh).move(this.jPNL1.morba.get(i));
                             this.jPNL1.maker(true, new Point(indexmohreh,i));
                             this.jPNL1.mohreh.get(this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)).remove();
+                            this.jPNL1.morba.get(this.jPNL1.morba.indexOf(rect)).c = color;
+                            for(int j = 0 ; j<lastcolor.size() ; j++){
+                                lastgochose.get(j).c = lastcolor.get(j);
+                            }
+                            lastcolor.clear();
                             if(nobat == 0){
                                 nobat = 1;
                             }
@@ -99,14 +143,6 @@ public class App extends javax.swing.JFrame {
                             }
                         }
                         this.repaint();
-                }
-            }
-            for (mohreh b : this.jPNL1.mohreh) {
-                if(b.gettype() == "shah" && ((nobat == 0 && b.getrang() == Color.black) || (nobat == 1 && b.getrang() == Color.white)) && b.cancickme(this.jPNL1.mohreh, this.jPNL1.morba)){
-                    System.out.println("kish");
-                    if(!b.cango(this.jPNL1.mohreh, this.jPNL1.morba)){
-                        System.out.println("mot!!");
-                    }
                 }
             }
         }

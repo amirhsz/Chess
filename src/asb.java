@@ -122,9 +122,10 @@ public class asb implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,boolean isfirst , ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(j-6 == k || j+6 == k || j+10 == k || j-10 == k || j+17 == k || j+15 == k || j-15 == k || j-17 == k){
-            return true;
-        }
+        if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang))
+            if(j-6 == k || j+6 == k || j+10 == k || j-10 == k || j+17 == k || j+15 == k || j-15 == k || j-17 == k){
+                return true;
+            }
         return false;
     }
 
@@ -135,7 +136,7 @@ public class asb implements mohreh {
 
     @Override
     public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
-        if(can(d , a , true , b) && d.doesmohreh(b) != -1){
+        if(can(d , a , true , b) && d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang){
                 return true;
             }
             return false;
@@ -161,7 +162,18 @@ public class asb implements mohreh {
     }
 
     @Override
-    public boolean cango(ArrayList<mohreh> a, ArrayList<rect> c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<rect> cango(ArrayList<mohreh> a, ArrayList<rect> c) {
+        ArrayList<rect> chose = new ArrayList();
+        for (rect c1 : c) {
+            if(this.can(c1, c, true, a)){
+                chose.add(c1);
+            }
+        }
+        return chose;
+    }
+
+    @Override
+    public rect getrect() {
+        return e;
     }
 }
