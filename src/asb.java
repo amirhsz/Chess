@@ -119,7 +119,7 @@ public class asb implements mohreh {
     }
 
     @Override
-    public boolean can(rect d, ArrayList<rect> a,boolean isfirst , ArrayList<mohreh> b) {
+    public boolean can(rect d, ArrayList<rect> a , ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
         if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang))
@@ -136,7 +136,7 @@ public class asb implements mohreh {
 
     @Override
     public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
-        if(can(d , a , true , b) && d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang){
+        if(can(d , a , b) && d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang){
                 return true;
             }
             return false;
@@ -165,7 +165,7 @@ public class asb implements mohreh {
     public ArrayList<rect> cango(ArrayList<mohreh> a, ArrayList<rect> c) {
         ArrayList<rect> chose = new ArrayList();
         for (rect c1 : c) {
-            if(this.can(c1, c, true, a)){
+            if(this.can(c1, c,a)){
                 chose.add(c1);
             }
         }

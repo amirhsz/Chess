@@ -67,11 +67,11 @@ public class sarbaz implements mohreh {
         return rang;
     }
     @Override
-    public boolean can(rect d, ArrayList<rect> a , boolean isfirst ,ArrayList<mohreh> b) {
+    public boolean can(rect d, ArrayList<rect> a,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
-            if(!isfirst){
+        if((d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() == rang))){
+            if(getchange()){
                 if(rang == Color.white){
                     if(j+1 == k){
                         return true;
@@ -110,7 +110,7 @@ public class sarbaz implements mohreh {
     public boolean cankick(rect d, ArrayList<rect> a, ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if(d.doesmohreh(b) != -1){
+        if(d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang){
             if(rang == Color.black){
                 if((j-9 == k) || (j+7 == k)){
                     return true;
@@ -149,7 +149,7 @@ public class sarbaz implements mohreh {
     public ArrayList<rect> cango(ArrayList<mohreh> a, ArrayList<rect> c) {
         ArrayList<rect> chose = new ArrayList();
         for (rect c1 : c) {
-            if(this.can(c1, c, true, a) || cankick(c1 , c , a)){
+            if(this.can(c1, c, a) || cankick(c1 , c , a)){
                 chose.add(c1);
             }
         }

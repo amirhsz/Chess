@@ -10,7 +10,6 @@ public class App extends javax.swing.JFrame {
     ArrayList<rect> lastgochose = new ArrayList();
     rect rect;
     int nobat = 0;
-    boolean isfirst = true;
     public App() {
         initComponents();
     }
@@ -102,16 +101,13 @@ public class App extends javax.swing.JFrame {
                     lastcolor.add(this.jPNL1.morba.get(this.jPNL1.morba.indexOf(b)).c);
                     this.jPNL1.morba.get(this.jPNL1.morba.indexOf(b)).c = chosecolor;
                 }
-                if(mohreh.getchange()){
-                    isfirst = false;
-                }
                 this.repaint();
             }
         }
         if(stat == "moved" && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
             for(int i = 0 ; i<this.jPNL1.morba.size() ; i++){
                 if(this.jPNL1.morba.get(i).is(c)){
-                    if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , isfirst , this.jPNL1.mohreh) && this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh) == -1){
+                    if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , this.jPNL1.mohreh) && this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh) == -1){
                         this.jPNL1.mohreh.get(indexmohreh).move(this.jPNL1.morba.get(i));
                         this.jPNL1.maker(true, new Point(indexmohreh,i));
                         this.jPNL1.morba.get(this.jPNL1.morba.indexOf(rect)).c = color;
