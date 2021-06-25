@@ -120,12 +120,35 @@ public class asb implements mohreh {
 
     @Override
     public boolean can(rect d, ArrayList<rect> a , ArrayList<mohreh> b) {
-        int j = a.indexOf(e);
-        int k = a.indexOf(d);
-        if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang))
-            if(j-6 == k || j+6 == k || j+10 == k || j-10 == k || j+17 == k || j+15 == k || j-15 == k || j-17 == k){
-                return true;
+        int jx = (e.x + e.w/2)/e.w;
+        int jy = (e.y + e.h/2)/e.h;
+        int kx = (d.x + d.w/2)/d.w;
+        int ky = (d.y + d.h/2)/d.h;
+        if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
+            if(jx>kx){
+                if(jx -1 == kx){
+                    if(jy+2 == ky || jy-2 == ky){
+                        return true;
+                    }
+                }
+                if(jx -2 == kx){
+                    if(jy+1 == ky || jy-1 == ky){
+                        return true;
+                    }
+                }
+            }else{
+                if(jx +1 == kx){
+                    if(jy+2 == ky || jy-2 == ky){
+                        return true;
+                    }
+                }
+                if(jx +2 == kx){
+                    if(jy+1 == ky || jy-1 == ky){
+                        return true;
+                    }
+                }
             }
+        }
         return false;
     }
 

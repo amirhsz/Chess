@@ -86,7 +86,6 @@ public class rokh implements mohreh {
         int[] k = {kx,ky};
         if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
             if((jx == kx) && (!e.doesmohrehrokh(a, j, k, b , false)) || ((jy == ky) && (!e.doesmohrehrokh(a, j, k, b , true)))){
-            //if(jx == kx || jy == ky){
                 return true;
             }
         }
