@@ -100,8 +100,13 @@ public class shah implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
+        int jx = (e.x + e.w/2)/e.w;
+        int jy = (e.y + e.h/2)/e.h;
+        int kx = (d.x + d.w/2)/d.w;
+        int ky = (d.y + d.h/2)/d.h;
         if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
-            if(j+1 == k || j-1 == k || j-8 == k || j+8 == k || j-7 == k || j+7 == k || j+9 == k || j-9 == k){
+            if((jx == kx &&(j-1 == k || j+1 == k)) || (jy == ky && (j+8 == k || j-8 == k))
+            || (j-7 == k && (jx-1 == kx && jy + 1 == ky)) || (j+7 == k && (jx+1 == kx && jy - 1 == ky)) || (j+9 == k && (jx+1 == kx && jy + 1 == ky)) || (j-9 == k&& (jx-1 == kx && jy - 1 == ky))){
                 return true;
             }
         }

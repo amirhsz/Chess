@@ -95,16 +95,32 @@ public class fil implements mohreh {
 
     @Override
     public boolean can(rect d, ArrayList<rect> a,ArrayList<mohreh> b) {
-        int j = a.indexOf(e);
-        int k = a.indexOf(d);
+        int jx = (e.x + e.w/2)/e.w;
+        int jy = (e.y + e.h/2)/e.h;
+        int kx = (d.x + d.w/2)/d.w;
+        int ky = (d.y + d.h/2)/d.h;
+        int[] j = {jx,jy};
+        int[] k = {kx,ky};
+        int i = 0;
         if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
-            if(((j-k)%9 == 0 || ((j-k)%7 == 0 && (j-k>8 || k-j>8))) && e.filvazirgo(a, b)){
-                return true;
+            while(i < 9){
+                i++;
+                if(jx>kx){
+                    if(jx - i == kx && (jy - i == ky || jy + i == ky)){
+                        return true;
+                    }
+                }else{
+                    if(jx + i == kx && (jy - i == ky || jy + i == ky)){
+                        return true;
+                    }
+                }
             }
-        }
+        } 
         return false;
     }
-
+    private int makefandl(int jy , int jx){
+        return jy + (8*jx);
+    }
     @Override
     public boolean getchange() {
         return change;

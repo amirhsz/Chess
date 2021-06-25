@@ -88,6 +88,34 @@ public class rect {
             }
         }
     }
+    public boolean doesmohrehfil(ArrayList<rect> a , int[] n , int[] m ,ArrayList<mohreh> b){
+        ArrayList<Integer> go = new ArrayList();
+        int jx = n[0];
+        int jy = n[1];
+        int kx = m[0];
+        int ky = m[1];
+        int i = 0;
+        while(i<9){
+            i++;
+            if(jx>kx){
+                go.add(makefandl(jy-i , jx-i));
+                go.add(makefandl(jy+i , jx-i));
+            }else{
+                go.add(makefandl(jy-i , jx+i));
+                go.add(makefandl(jy+i , jx+i));
+            }
+        }
+        for (Integer g : go) {
+            //System.out.println(g);
+            if(a.get(g).doesmohreh(b) != -1 && a.get(g).doesmohreh(b) != makefandl(ky,kx)){
+                return true;
+            }
+        }
+        return false;
+    }
+    private int makefandl(int jy , int jx){
+        return jy + (8*jx);
+    }
     public int doesrect(ArrayList<rect> morba){
         for(int i = 0 ; i<morba.size() ; i++){
             if(this.is(morba.get(i).vasat())){
@@ -95,17 +123,6 @@ public class rect {
             }
         }
         return -1;
-    }
-    public boolean filvazirgo(ArrayList<rect> morba , ArrayList<mohreh> moh){
-        int k = morba.indexOf(this);
-        try{
-            for(int i = 1 ; i<8 ; i++){
-                if(morba.get(k+9*i).doesmohreh(moh) != -1){
-                    return false;
-                }
-            }
-        }catch(Exception e){}
-        return true;
     }
     @Override
     public String toString(){
