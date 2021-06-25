@@ -51,6 +51,43 @@ public class rect {
         }
         return false;
     }
+    public boolean doesmohrehrokh(ArrayList<rect> a , int[] n , int[] m ,ArrayList<mohreh> b , boolean isofogh){
+        int first = n[1]+(8*n[0]);
+        int last = m[1]+(8*m[0]);
+        int fasleh;
+        int i = 0;
+        if(isofogh){
+            if(first>last){
+                fasleh = (first - last)/8;
+            }else{
+                fasleh = (last - first)/8;
+            }
+            while(fasleh > 0){
+                i++;
+                if(first>last){
+                    if(a.get(first-(i*8)).doesmohreh(b) != -1){
+                        if(b.get(a.get(first-(i*8)).doesmohreh(b)).getrect() != a.get(last)){
+                            return true;
+                        }
+                    }
+                }else{
+                    if(a.get(first+(i*8)).doesmohreh(b) != -1){
+                        if(b.get(a.get(first+(i*8)).doesmohreh(b)).getrect() != a.get(last)){
+                            return true;
+                        }
+                    }
+                }
+                fasleh --;   
+            }
+            return false;
+        }else{
+            if(first>last){
+                return doesmohreh(a,last,first,b);
+            }else{
+                return doesmohreh(a,first,last,b);
+            }
+        }
+    }
     public int doesrect(ArrayList<rect> morba){
         for(int i = 0 ; i<morba.size() ; i++){
             if(this.is(morba.get(i).vasat())){

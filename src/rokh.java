@@ -78,11 +78,15 @@ public class rokh implements mohreh {
 
     @Override
     public boolean can(rect d, ArrayList<rect> a,ArrayList<mohreh> b) {
-        int j = a.indexOf(e);
-        int k = a.indexOf(d);
+        int jx = (e.x + e.w/2)/e.w;
+        int jy = (e.y + e.h/2)/e.h;
+        int kx = (d.x + d.w/2)/d.w;
+        int ky = (d.y + d.h/2)/d.h;
+        int[] j = {jx,jy};
+        int[] k = {kx,ky};
         if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
-            if(((j-k)%8 == 0 || (k-j)%8==0) || (((j-k)>0 && (j-k)<8 && !e.doesmohreh(a, k, j, b))
-            || ((k-j)>0 && (k-j)<8 && !e.doesmohreh(a, j, k, b)))){
+            if((jx == kx) && (!e.doesmohrehrokh(a, j, k, b , false)) || ((jy == ky) && (!e.doesmohrehrokh(a, j, k, b , true)))){
+            //if(jx == kx || jy == ky){
                 return true;
             }
         }

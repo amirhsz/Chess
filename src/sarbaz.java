@@ -70,31 +70,32 @@ public class sarbaz implements mohreh {
     public boolean can(rect d, ArrayList<rect> a,ArrayList<mohreh> b) {
         int j = a.indexOf(e);
         int k = a.indexOf(d);
-        if((d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() == rang))){
-            if(getchange()){
+        if((d.doesmohreh(b) == -1)){
+            if(change){
                 if(rang == Color.white){
                     if(j+1 == k){
                         return true;
                     }
-                }
-                else{
+                }else{
                     if(j-1 == k){
                         return true;
                     }
                 }
             }
             else{
-                if(rang == Color.white){
-                    if(j+1 == k || j+2 == k){
-                        return true;
+                if(!e.doesmohreh(a, k, j, b) && !e.doesmohreh(a, j, k, b)){
+                    if(rang == Color.white){
+                        if(j+1 == k || j+2 == k){
+                            return true;
+                        }
                     }
-                }
-                else{
-                    if(j-1 == k || j-2 == k){
-                        return true;
-                    }
-                    if(j-2 == k && e.doesmohreh(a, k, j, b)){
-                        return false;
+                    else{
+                        if(j-1 == k || j-2 == k){
+                            return true;
+                        }
+                        if(j-2 == k && e.doesmohreh(a, k, j, b)){
+                            return false;
+                        }
                     }
                 }
             }
