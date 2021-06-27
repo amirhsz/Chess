@@ -95,23 +95,7 @@ public class rect {
         int kx = m[0];
         int ky = m[1];
         int i = 0;
-        while(i<9){
-            i++;
-            if(jx>kx){
-                go.add(makefandl(jy-i , jx-i));
-                go.add(makefandl(jy+i , jx-i));
-            }else{
-                go.add(makefandl(jy-i , jx+i));
-                go.add(makefandl(jy+i , jx+i));
-            }
-        }
-        for (Integer g : go) {
-            //System.out.println(g);
-            if(a.get(g).doesmohreh(b) != -1 && a.get(g).doesmohreh(b) != makefandl(ky,kx)){
-                return true;
-            }
-        }
-        return false;
+        
     }
     private int makefandl(int jy , int jx){
         return jy + (8*jx);

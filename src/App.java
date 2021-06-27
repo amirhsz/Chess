@@ -2,7 +2,10 @@ import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 public class App extends javax.swing.JFrame {
+    startframe a = new startframe();
     String stat = "no";
+    ArrayList<mohreh> shahkickers = new ArrayList();
+    mohreh shah;
     int indexmohreh,indexmorba;
     mohreh mohreh;
     Color color,rang = Color.yellow , chosecolor = Color.red;
@@ -10,7 +13,8 @@ public class App extends javax.swing.JFrame {
     ArrayList<rect> lastgochose = new ArrayList();
     rect rect;
     int nobat = 0;
-    public App() {
+    public App(startframe a) {
+        this.a = a;
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -29,7 +33,17 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        jLabel2 = new javax.swing.JLabel();
         jPNL1 = new JPNL();
+        jLabel1 = new javax.swing.JLabel();
+        black = new javax.swing.JRadioButton();
+        white = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,12 +62,39 @@ public class App extends javax.swing.JFrame {
         jPNL1.setLayout(jPNL1Layout);
         jPNL1Layout.setHorizontalGroup(
             jPNL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPNL1Layout.setVerticalGroup(
             jPNL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("trun:");
+
+        buttonGroup6.add(black);
+        black.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        black.setText("black");
+        black.setEnabled(false);
+
+        buttonGroup6.add(white);
+        white.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        white.setText("white");
+        white.setEnabled(false);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("state:");
+
+        status.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        status.setText("in game");
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("back to menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,14 +102,42 @@ public class App extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPNL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(black)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(white)
+                                .addGap(85, 85, 85)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(status)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPNL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPNL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(white, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3)
+                                .addComponent(status)))
+                        .addComponent(black, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPNL1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -141,14 +210,58 @@ public class App extends javax.swing.JFrame {
                         this.repaint();
                 }
             }
+            shahkickers.clear();
+            shah = findshah(nobat , this.jPNL1.mohreh);
+            for(mohreh r : this.jPNL1.mohreh){
+                if(r.cankick(shah.getrect(), this.jPNL1.morba, this.jPNL1.mohreh)){
+                    shahkickers.add(r);
+                }
+                if(shah.cancickme(this.jPNL1.mohreh, this.jPNL1.morba)){
+                    this.status.setText("Kish");
+                    if(shah.cango(this.jPNL1.mohreh, this.jPNL1.morba).isEmpty()){
+                        for(mohreh kicker : shahkickers){
+                            if(!kicker.cancickme(this.jPNL1.mohreh, this.jPNL1.morba)){
+                                this.status.setText("Kish and Mot");
+                            }
+                        }
+                    }
+                }
+            }
+            if(shah.isemove()){
+                this.status.setText("Kish and Mot");
+            }
         }
     }//GEN-LAST:event_jPNL1MouseClicked
-
+    public mohreh findshah(int nobat , ArrayList<mohreh> a){
+        mohreh shah = null;
+        for(mohreh b : a){
+            if(nobat == 0){
+                if("shah".equals(b.gettype()) && b.getrang() == Color.BLACK){
+                    shah = b;
+                }
+            }else{
+                if("shah".equals(b.gettype()) && b.getrang() == Color.white){
+                    shah = b;
+                }
+            }
+        }
+        return shah;
+    }
     private void jPNL1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPNL1MouseMoved
         if(stat == "select" && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
             stat = "moved";
         }
+        if(nobat == 0){
+            this.white.setSelected(true);
+        }else{
+            this.black.setSelected(true);
+        }
     }//GEN-LAST:event_jPNL1MouseMoved
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -178,6 +291,14 @@ public class App extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton black;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private JPNL jPNL1;
+    private javax.swing.JLabel status;
+    private javax.swing.JRadioButton white;
     // End of variables declaration//GEN-END:variables
 }

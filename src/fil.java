@@ -113,9 +113,9 @@ public class fil implements mohreh {
                     if(jx + i == kx && (jy - i == ky || jy + i == ky)){
                         return true;
                     }
+            }
                 }
             }
-        } 
         return false;
     }
     private int makefandl(int jy , int jx){

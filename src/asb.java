@@ -120,35 +120,37 @@ public class asb implements mohreh {
 
     @Override
     public boolean can(rect d, ArrayList<rect> a , ArrayList<mohreh> b) {
-        int jx = (e.x + e.w/2)/e.w;
-        int jy = (e.y + e.h/2)/e.h;
-        int kx = (d.x + d.w/2)/d.w;
-        int ky = (d.y + d.h/2)/d.h;
-        if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
-            if(jx>kx){
-                if(jx -1 == kx){
-                    if(jy+2 == ky || jy-2 == ky){
-                        return true;
+        try{
+            int jx = (e.x + e.w/2)/e.w;
+            int jy = (e.y + e.h/2)/e.h;
+            int kx = (d.x + d.w/2)/d.w;
+            int ky = (d.y + d.h/2)/d.h;
+            if(d.doesmohreh(b) == -1 || (d.doesmohreh(b) != -1 && b.get(d.doesmohreh(b)).getrang() != rang)){
+                if(jx>kx){
+                    if(jx -1 == kx){
+                        if(jy+2 == ky || jy-2 == ky){
+                            return true;
+                        }
                     }
-                }
-                if(jx -2 == kx){
-                    if(jy+1 == ky || jy-1 == ky){
-                        return true;
+                    if(jx -2 == kx){
+                        if(jy+1 == ky || jy-1 == ky){
+                            return true;
+                        }
                     }
-                }
-            }else{
-                if(jx +1 == kx){
-                    if(jy+2 == ky || jy-2 == ky){
-                        return true;
+                }else{
+                    if(jx +1 == kx){
+                        if(jy+2 == ky || jy-2 == ky){
+                            return true;
+                        }
                     }
-                }
-                if(jx +2 == kx){
-                    if(jy+1 == ky || jy-1 == ky){
-                        return true;
+                    if(jx +2 == kx){
+                        if(jy+1 == ky || jy-1 == ky){
+                            return true;
+                        }
                     }
                 }
             }
-        }
+        }catch(Exception e){}
         return false;
     }
 

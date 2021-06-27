@@ -140,7 +140,6 @@ public class shah implements mohreh {
     public boolean cancickme(ArrayList<mohreh> a, ArrayList<rect> c){
         for (mohreh b : a) {
             if(b.cankick(e, c, a) && b.getrang() != rang){
-                System.out.println(a.indexOf(b));
                 return true;
             }
         }

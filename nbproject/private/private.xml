@@ -5,14 +5,14 @@
         <group>
             <file>file:/F:/java/Chess/src/App.java</file>
             <file>file:/F:/java/Chess/src/JPNL.java</file>
-            <file>file:/F:/java/Chess/src/sarbaz.java</file>
-            <file>file:/F:/java/Chess/src/mohreh.java</file>
-            <file>file:/F:/java/Chess/src/rect.java</file>
-            <file>file:/F:/java/Chess/src/vazir.java</file>
-            <file>file:/F:/java/Chess/src/rokh.java</file>
-            <file>file:/F:/java/Chess/src/shah.java</file>
             <file>file:/F:/java/Chess/src/asb.java</file>
+            <file>file:/F:/java/Chess/src/mohreh.java</file>
             <file>file:/F:/java/Chess/src/fil.java</file>
+            <file>file:/F:/java/Chess/src/rect.java</file>
+            <file>file:/F:/java/Chess/src/rokh.java</file>
+            <file>file:/F:/java/Chess/src/sarbaz.java</file>
+            <file>file:/F:/java/Chess/src/shah.java</file>
+            <file>file:/F:/java/Chess/src/vazir.java</file>
         </group>
     </open-files>
 </project-private>
