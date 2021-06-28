@@ -2,7 +2,8 @@ import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 public class App extends javax.swing.JFrame {
-    startframe a = new startframe();
+    startframe a;
+    middleframe b;
     String stat = "no";
     ArrayList<mohreh> shahkickers = new ArrayList();
     mohreh shah;
@@ -13,8 +14,9 @@ public class App extends javax.swing.JFrame {
     ArrayList<rect> lastgochose = new ArrayList();
     rect rect;
     int nobat = 0;
-    public App(startframe a) {
-        this.a = a;
+    public App(middleframe a) {
+        this.b = a;
+        this.a = b.a;
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -269,7 +271,7 @@ public class App extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -286,7 +288,7 @@ public class App extends javax.swing.JFrame {
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new App().setVisible(true);
+                new App(new middleframe(new startframe())).setVisible(true);
             }
         });
     }

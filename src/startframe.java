@@ -1,5 +1,6 @@
 public class startframe extends javax.swing.JFrame {
-    App a;
+    //App a;
+    middleframe b;
     boolean isfirst = true;
     public startframe() {
         initComponents();
@@ -66,36 +67,27 @@ public class startframe extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(isfirst){
-            a = new App(this);
-            a.setVisible(true);
-            this.setVisible(false);
-            isfirst = false;
-        }else{
-            App b = new App(this);
+            b = new middleframe(this);
             b.setVisible(true);
             this.setVisible(false);
+            isfirst = false;
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(!isfirst){
-            a.setVisible(true);
+            b.b.setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -110,15 +102,12 @@ public class startframe extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(startframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new startframe().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
