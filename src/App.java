@@ -1,7 +1,14 @@
 import java.awt.Color;
 import java.awt.Point;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class App extends javax.swing.JFrame {
+    load g;
+    String dir = "F:\\java\\Chess\\saved\\";
+    FileWriter save;
+    FileReader load;
     startframe a;
     middleframe b;
     String stat = "no";
@@ -17,7 +24,28 @@ public class App extends javax.swing.JFrame {
     public App(middleframe a) {
         this.b = a;
         this.a = b.a;
+        try{
+            save = new FileWriter(dir+b.name+".txt");
+        }catch(IOException e){}
         initComponents();
+    }
+    public App(load a){
+        g = a;
+        this.a = g.a;
+        if(g.chose){
+            load = g.choser;
+            System.out.println(load);
+        }
+        try {
+            save = new FileWriter(dir + g.name);
+        } catch (IOException ex) {}
+        initComponents();
+    }
+    public void load(){
+        String goed;
+        try{
+        System.out.println(load.read());
+        }catch(Exception e){}
     }
     @SuppressWarnings("unchecked")
     public boolean doeschangechose(){
@@ -68,7 +96,7 @@ public class App extends javax.swing.JFrame {
         );
         jPNL1Layout.setVerticalGroup(
             jPNL1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -117,8 +145,7 @@ public class App extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(status)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
                     .addComponent(jPNL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -139,7 +166,7 @@ public class App extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPNL1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPNL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -175,13 +202,39 @@ public class App extends javax.swing.JFrame {
                 this.repaint();
             }
         }
-        if(stat == "moved" && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
+        if("moved".equals(stat) && ((mohreh.getrang() == Color.white && nobat == 0) ||(mohreh.getrang() == Color.black && nobat == 1))){
             for(int i = 0 ; i<this.jPNL1.morba.size() ; i++){
                 if(this.jPNL1.morba.get(i).is(c)){
                     if(mohreh.can(this.jPNL1.morba.get(i), this.jPNL1.morba , this.jPNL1.mohreh) && this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh) == -1){
-                        this.jPNL1.mohreh.get(indexmohreh).move(this.jPNL1.morba.get(i));
+                        mohreh.move(this.jPNL1.morba.get(i));
                         this.jPNL1.maker(true, new Point(indexmohreh,i));
                         this.jPNL1.morba.get(this.jPNL1.morba.indexOf(rect)).c = color;
+                        try{
+                            String type = mohreh.gettype();
+                            String name = null;
+                            switch(type){
+                                case "shah":
+                                    name = "k";
+                                    break;
+                                case "asb":
+                                    name = "N";
+                                    break;
+                                case "fil":
+                                    name = "B";
+                                    break;
+                                case "rokh":
+                                    name = "R";
+                                    break;
+                                case "vazir":
+                                    name = "Q";
+                                    break;
+                                case "sarbaz":
+                                    name = "P";
+                                    break;
+                            }
+                            save.write(indexmorba+name+i+"\n");
+                            save.flush();
+                        }catch(IOException e){}
                         for(int j = 0 ; j<lastcolor.size() ; j++){
                             lastgochose.get(j).c = lastcolor.get(j);
                         }
@@ -198,6 +251,32 @@ public class App extends javax.swing.JFrame {
                             this.jPNL1.maker(true, new Point(indexmohreh,i));
                             this.jPNL1.mohreh.get(this.jPNL1.morba.get(i).doesmohreh(this.jPNL1.mohreh)).remove();
                             this.jPNL1.morba.get(this.jPNL1.morba.indexOf(rect)).c = color;
+                            try{
+                                String type = mohreh.gettype();
+                                String name = null;
+                                switch(type){
+                                    case "shah":
+                                        name = "k";
+                                        break;
+                                    case "asb":
+                                        name = "N";
+                                        break;
+                                    case "fil":
+                                        name = "B";
+                                        break;
+                                    case "rokh":
+                                        name = "R";
+                                        break;
+                                    case "vazir":
+                                        name = "Q";
+                                        break;
+                                    case "sarbaz":
+                                        name = "P";
+                                        break;
+                                }
+                                save.write(indexmorba+name+"x"+i+"\n");
+                                save.flush();
+                            }catch(IOException e){}
                             for(int j = 0 ; j<lastcolor.size() ; j++){
                                 lastgochose.get(j).c = lastcolor.get(j);
                             }
@@ -258,8 +337,8 @@ public class App extends javax.swing.JFrame {
         }else{
             this.black.setSelected(true);
         }
+        load();
     }//GEN-LAST:event_jPNL1MouseMoved
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         a.setVisible(true);
         this.setVisible(false);
@@ -289,6 +368,7 @@ public class App extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new App(new middleframe(new startframe())).setVisible(true);
+                new App(new load(new startframe())).setVisible(true);
             }
         });
     }
